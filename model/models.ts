@@ -39,6 +39,7 @@ export * from './spaceReservationFeature';
 export * from './spaceReservationFeatureRequest';
 export * from './spaceReservationGroupedResponse';
 export * from './spaceReservationResponse';
+export * from './subscriptionProductResponse';
 export * from './subscriptionResponse';
 export * from './subscriptionStatusResponse';
 export * from './unauthorizedError401Response';

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { RentalType } from './rentalType';
+import { SubscriptionProductResponse } from './subscriptionProductResponse';
 import { RentalStatus } from './rentalStatus';
 
 
@@ -96,6 +97,10 @@ export interface RentalResponse {
      * Created at.
      */
     createdAt: string;
+    /**
+     * Sub products on the rental
+     */
+    subscriptionProducts: Array<SubscriptionProductResponse>;
 }
 export namespace RentalResponse {
 }

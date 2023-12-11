@@ -1340,18 +1340,25 @@ export class DefaultService {
      * Get rentals
      * @param orgId The Organization ID
      * @param siteId The Site ID
+     * @param accountId The Account ID
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getRentals(orgId: string, siteId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetRental200Response>;
-    public getRentals(orgId: string, siteId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetRental200Response>>;
-    public getRentals(orgId: string, siteId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetRental200Response>>;
-    public getRentals(orgId: string, siteId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public getRentals(orgId: string, siteId: string, accountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetRental200Response>;
+    public getRentals(orgId: string, siteId: string, accountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetRental200Response>>;
+    public getRentals(orgId: string, siteId: string, accountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetRental200Response>>;
+    public getRentals(orgId: string, siteId: string, accountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getRentals.');
         }
         if (siteId === null || siteId === undefined) {
             throw new Error('Required parameter siteId was null or undefined when calling getRentals.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (accountId !== undefined && accountId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>accountId, 'accountId');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -1396,6 +1403,7 @@ export class DefaultService {
         return this.httpClient.request<GetRental200Response>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
