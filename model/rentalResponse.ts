@@ -69,6 +69,10 @@ export interface RentalResponse {
      */
     intendedMoveOutDate: string | null;
     /**
+     * MoveIn date.
+     */
+    moveInDate: string | null;
+    /**
      * Move out date.
      */
     moveOutDate: string | null;
